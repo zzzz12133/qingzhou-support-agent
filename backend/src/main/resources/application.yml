@@ -1,0 +1,38 @@
+server:
+  port: ${SERVER_PORT:8088}
+  compression:
+    enabled: false
+  tomcat:
+    connection-timeout: 30s
+
+spring:
+  application:
+    name: lightdesk-support-agent
+  mvc:
+    async:
+      request-timeout: 120000
+  jackson:
+    default-property-inclusion: non_null
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 3600
+          cache-public: true
+
+app:
+  agent-base-url: ${AGENT_BASE_URL:http://127.0.0.1:8001}
+  data-dir: ${BACKEND_DATA_DIR:./.data}
+  rate-limit-per-minute: ${RATE_LIMIT_PER_MINUTE:20}
+  max-concurrent-per-user: ${MAX_CONCURRENT_PER_USER:2}
+  max-message-length: ${MAX_MESSAGE_LENGTH:2000}
+  sse-timeout-ms: ${SSE_TIMEOUT_MS:120000}
+  agent-connect-timeout-seconds: 5
+  agent-read-timeout-seconds: ${AGENT_READ_TIMEOUT_SECONDS:90}
+
+logging:
+  level:
+    root: INFO
+    com.lightdesk.support: INFO
+  pattern:
+    console: "%d{HH:mm:ss.SSS} %-5level [%thread] %logger{28} - %msg%n"

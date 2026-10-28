@@ -1,0 +1,257 @@
+/* Font scale + settings menu additions. Loaded last so all fixed px text
+   declarations can scale together without changing layout dimensions. */
+
+:root {
+  --font-scale: 1.12;
+}
+
+html[data-font-size="sm"] {
+  --font-scale: 1;
+}
+
+html[data-font-size="md"] {
+  --font-scale: 1.12;
+}
+
+html[data-font-size="lg"] {
+  --font-scale: 1.24;
+}
+
+html[data-font-size="xl"] {
+  --font-scale: 1.36;
+}
+
+.settings-menu {
+  width: 286px;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  padding: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll) transparent;
+}
+
+.theme-trigger {
+  display: inline-flex;
+  width: auto;
+  min-width: 34px;
+  align-items: center;
+  gap: 5px;
+  padding: 0 9px;
+}
+
+.settings-trigger-label {
+  color: var(--text-muted);
+  font-size: calc(9.5px * var(--font-scale));
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.theme-trigger.is-open .settings-trigger-label {
+  color: var(--accent);
+}
+
+.settings-menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.settings-menu::-webkit-scrollbar-thumb {
+  background: var(--scroll);
+  border-radius: 4px;
+}
+
+.settings-section {
+  min-width: 0;
+}
+
+.settings-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 8px 6px;
+  color: var(--text-muted);
+  font-size: calc(9px * var(--font-scale));
+  font-weight: 600;
+}
+
+.settings-label em {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: calc(6px * var(--font-scale));
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+.settings-divider {
+  height: 1px;
+  margin: 8px 7px;
+  background: var(--line);
+}
+
+.font-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+  padding: 0 5px;
+}
+
+.font-option {
+  min-width: 0;
+  padding: 6px 2px;
+  color: var(--text-muted);
+  font-size: calc(9px * var(--font-scale));
+  font-weight: 550;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  transition: color 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.font-option:hover {
+  color: var(--text-strong);
+  background: var(--hover);
+}
+
+.font-option.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: rgba(234, 88, 12, 0.24);
+}
+
+html[data-theme="dusk"] .font-option.active {
+  border-color: rgba(251, 146, 60, 0.28);
+}
+
+.font-preview {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 8px 5px 2px;
+  padding: 8px 9px;
+  color: var(--text-muted);
+  font-size: calc(10.5px * var(--font-scale));
+  line-height: 1.5;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+
+.font-preview span {
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-size: calc(15px * var(--font-scale));
+  font-weight: 700;
+  line-height: 1;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 7px;
+  color: var(--text-muted);
+  font-size: calc(9.5px * var(--font-scale));
+}
+
+.pref-options {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 2px;
+  padding: 2px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+
+.pref-options button {
+  padding: 3px 7px;
+  color: var(--text-faint);
+  font-size: calc(8.5px * var(--font-scale));
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+}
+
+.pref-options button:hover {
+  color: var(--text-strong);
+}
+
+.pref-options button.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.settings-reset {
+  display: block;
+  width: calc(100% - 10px);
+  margin: 9px 5px 2px;
+  padding: 6px;
+  color: var(--text-faint);
+  font-size: calc(9px * var(--font-scale));
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.settings-reset:hover {
+  color: var(--accent);
+  background: var(--hover);
+}
+
+/* Message density and a manual reduced-motion preference. */
+html[data-density="compact"] .user-row {
+  margin: 14px 0 5px;
+}
+
+html[data-density="compact"] .assistant-row {
+  margin: 11px 0 14px;
+}
+
+html[data-density="compact"] .assistant-message {
+  padding: 10px 13px 7px;
+}
+
+html[data-density="compact"] .message-content {
+  line-height: 1.62;
+}
+
+html[data-density="compact"] .conversation-day {
+  margin-bottom: 15px;
+}
+
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.settings-menu .theme-option {
+  padding: 7px 8px;
+}
+
+@media (max-width: 560px) {
+  .settings-menu {
+    width: min(286px, calc(100vw - 64px));
+    max-height: calc(100vh - 84px);
+  }
+
+  .theme-trigger {
+    width: 29px;
+    min-width: 29px;
+    height: 29px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .settings-trigger-label {
+    display: none;
+  }
+
+  .settings-label {
+    font-size: calc(9px * var(--font-scale));
+  }
+}

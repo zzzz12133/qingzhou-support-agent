@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f3b25f" />
+    <meta
+      name="description"
+      content="晴舟客服 Agent：会查订单、懂售后政策、记得住上下文的客服工作台。"
+    />
+    <script>
+      (() => {
+        try {
+          const pref = localStorage.getItem('lightdesk-theme') || 'warm';
+          const valid = ['warm', 'dusk', 'system'].includes(pref) ? pref : 'warm';
+          const resolved = valid === 'system'
+            ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dusk' : 'warm')
+            : valid;
+          document.documentElement.dataset.theme = resolved;
+          document.documentElement.style.colorScheme = resolved === 'dusk' ? 'dark' : 'light';
+          const size = localStorage.getItem('qingzhou-font-size') || 'md';
+          document.documentElement.dataset.fontSize = ['sm', 'md', 'lg', 'xl'].includes(size)
+            ? size
+            : 'md';
+          const density = localStorage.getItem('qingzhou-density') || 'comfortable';
+          document.documentElement.dataset.density = ['comfortable', 'compact'].includes(density)
+            ? density
+            : 'comfortable';
+          const motion = localStorage.getItem('qingzhou-motion') || 'full';
+          document.documentElement.dataset.motion = ['full', 'reduced'].includes(motion)
+            ? motion
+            : 'full';
+        } catch {
+          document.documentElement.dataset.theme = 'warm';
+          document.documentElement.dataset.fontSize = 'md';
+          document.documentElement.dataset.density = 'comfortable';
+          document.documentElement.dataset.motion = 'full';
+        }
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>晴舟客服 · Agent 工作台</title>
+    <script type="module" crossorigin src="/assets/index-CbYtqbqw.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-lPJaONOz.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
