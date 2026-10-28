@@ -1,0 +1,33 @@
+# local config & secrets
+.env
+*.local
+
+# runtime
+.run/
+.data/
+backend/.data/
+agent-service/data/sessions/*.json
+agent-service/data/tickets.json
+agent-service/data/tickets.tmp
+agent-service/.test-tmp/
+
+# build & dependencies
+backend/target/
+frontend/node_modules/
+frontend/.npm-cache/
+frontend/dist/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# editor / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
