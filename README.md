@@ -32,7 +32,7 @@
 
 ## 2. 30 秒启动（Windows）
 
-Requirements：**Java 17**、**Python 3.11+**。运行现成版本不需要 Node/npm/Maven（前端已构建、jar 已打包）。
+Requirements：**Java 17**、**Python 3.11+**。本地这份文件夹已带预构建静态前端和 jar，可直接启动；从 GitHub 克隆的版本不含 `backend/target`，首次运行 `start.bat` 时会用 Maven 自动构建 jar（需要 Maven）。
 
 > **当前本机 `.env` 已切到 DeepSeek**，Key 只保存在本机且 `.env` 已被 `.gitignore` 忽略。
 > 如果要回到完全离线的 Mock，把 `LLM_PROVIDER` 改回 `mock` 即可。
@@ -214,7 +214,7 @@ Agent 与网关之间用 **NDJSON 逐行事件**，Spring 再包成浏览器 SSE
 │  └─ tests/test_agent.py          # 6 个 Agent 流程测试
 ├─ backend/                        # Spring Boot 网关（8088）
 │  ├─ src/main/java/...            # SSE、会话、限流、取消
-│  └─ target/support-agent.jar     # 已构建可执行 jar
+│  └─ target/support-agent.jar     # 本地构建产物（GitHub 仓库不含）
 ├─ frontend/                       # React 18 + Vite
 │  ├─ src/App.jsx                  # 流式状态机 / 会话
 │  ├─ src/components/              # 工作台、观察窗、Markdown
